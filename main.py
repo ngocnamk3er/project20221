@@ -50,7 +50,7 @@ print(dfDataTB)
 dfDataTB.to_csv('DataTblop.csv',index=False)  
 
 # ket thuc tao FIle dai dien lop va ghi ra taoFileDaiDienLop.csv
-
+ 
 # bài toán mahanta
 
 attribute = dfData.columns.drop([dfData.columns[len(dfData.columns)-1]])
@@ -87,7 +87,7 @@ print(dt)
 
 # Weight ban đầu cho bài toán phân lớp
 w = []
-print('Tinh weigt:')
+print('Tinh weigt*:')
 for i in range(len(attribute)):
     w.append(1/(len(attribute)))
 w0 = w
@@ -96,7 +96,6 @@ w0
 dw = dt*w0
 d1 = dw.sum(axis=0)/(len(dt))
 
-print(d1)
 w1 = round(d1/d1.sum(axis=0), 4)
 tw = w1-w
 tw1 = abs(tw.min(axis=0))
@@ -130,13 +129,13 @@ print(IF_non_Test)
 T_test = round((3+2*IF_tesT+IF_tesT*IF_tesT-IF_non_Test-2 *
                IF_non_Test*IF_non_Test)*np.exp(2*IF_tesT-2*IF_non_Test-2)/6, 4) # Syn Class
 
-print("T_test: ")
+print("Syn Class: ")
 print(T_test)
 
 lbl = dfDataTB[dfDataTB.columns[len(dfData.columns)-1]].unique().tolist() # List chứa tên các lớp
 
 # Tính khoảng cách từ mỗi đối tượng đến tâm của các lớp
-
+print("Khoảng cách từ mỗi đối tượng đến tâm các lớp")
 ghep = pd.DataFrame() # DataFrame chứa khoảng cách từ mỗi đối tượng đến các lớp và kết luận đối tượng đó thuộc lớp nào
 for i in range(0, len(T_test)):
     # Tính khoảng cách đến lớp
